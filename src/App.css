@@ -3,9 +3,10 @@
 }
 
 .App-logo {
-  height: 40vmin;
   pointer-events: none;
 }
+
+@import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -13,16 +14,21 @@
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.app-header .container {
   display: flex;
-  flex-direction: column;
+  padding: .5rem 0;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
+
+.page-logo {
+  margin-right: 1rem;
+}
+
+.app-header img {
+  max-width: 10rem;
+  height: 4.2rem;
+}
+
 
 .App-link {
   color: #61dafb;
@@ -35,4 +41,12 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
 }
