@@ -1,15 +1,15 @@
 import React from 'react';
-import {StyledButton} from '../styled/styles';
+import {DefaultButton} from '../styled/styles';
 
 interface BtnProps {
     btnText: string;
-    type: string;
+    // type: string;
 }
 
-const Button = ({type, btnText}: BtnProps) => {
-    const types = type.split('"').join('')
+const Button = ({ btnText}: BtnProps) => {
+    // const types = type.split('"').join('')
     return (
-        <StyledButton {...types}>{btnText}</StyledButton>
+        <DefaultButton>{btnText}</DefaultButton>
     );
 }
 

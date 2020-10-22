@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
-import Button from '../components/button';
+import { Route, Switch } from 'react-router';
+import Home from '../pages/Home';
+import AddEmployee from './../pages/AddEmployee';
+import EmployeeList from './../pages/EmployeeList';
 
 class PageBody extends Component {
     render() {
-        const button1 = "Primary Button";
         return (
-            <div className="page-body container py-5">
-                <h3 className="border-bottom">Button with external style</h3>
-                <Button type="secondary" btnText={button1}></Button>
-            </div>
+            <Switch>
+                <Route exact path='/' component={Home}/>
+                <Route exact path='/employee-list' component={EmployeeList}/>
+                <Route exact path='/add-employee' component={AddEmployee}/>
+            </Switch>
         );
     }
 }   

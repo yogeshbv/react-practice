@@ -1,24 +1,22 @@
 // import styled from 'styled-components';
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 
-export const StyledButton = styled.button`
+export const DefaultButton = styled.button`
   padding: 10px 20px;
   box-shadow: none;
-  
-  ${props => props.primary && css`
-    background: #6c757d;
-    color: white;
-  `}
-
-  ${props => props.secondary && css`
-    background: #6c757d;
-    color: white;
-  `}
+  border-radius: 4px;
+  border: none;
+  margin-right: 1rem;
 `;
 
-export const Paragraph = styled.p`
-  font-size: 14px;
-  line-height: 18px;
-  color: #4a4a4a;
-  margin-bottom: 20px;
+// Extend example
+export const PrimaryButton = styled(DefaultButton)`
+  background: #007bff;
+  color: #FFFFFF
+`;
+
+// Extend example
+export const SecondaryButton = styled(DefaultButton)`
+  background: #6c757d;
+  color: #FFFFFF
 `;
