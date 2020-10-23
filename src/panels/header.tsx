@@ -21,8 +21,9 @@ const MainMenu = styled.ul`
 const SelectTheme =styled.div`
     width: 150px;
     padding: .3rem;
-    background: #FFFFFF;
-    padding: .2rem;
+    background: #ffffff;
+    padding: .2rem 0 0.2rem 0.2rem;
+    border-radius: 4px;
     margin-left: auto;
     ul {
         margin: 0;
@@ -30,7 +31,7 @@ const SelectTheme =styled.div`
         display: flex;
         list-style: none;
         li {
-            margin-right: .2rem;
+            margin-right: 0.2rem;
             flex: 1;
             button {
                 background: transparent;
@@ -45,24 +46,23 @@ const SelectTheme =styled.div`
 `;
 
 const Head = styled.header`
-    background: ${props => props.theme === "dark" ? "#212121" : props.theme === "light" ? "#f5f5f5" : "#FFFFFF"};
-    color: ${props => props.theme === "dark" ? "#FFFFFF" : props.theme === "light" ? "#333333" : "#333333"};
-    margin-bottom: 4rem;
+    background: ${props => props.theme === "dark" ? "#212121" : props.theme === "light" ? "#f5f5f5" : "#ffffff"};
+    color: ${props => props.theme === "dark" ? "#ffffff" : props.theme === "light" ? "#333333" : "#333333"};
 
     ${Container} {
         display: flex;
-        padding: .5rem 0;
+        padding: 0.5rem 0;
         align-items: center;
     }
 
     ${MainMenu} {
         li {
             list-style: none;
-            margin-right: .2rem;
+            margin-right: 0.2rem;
             a {
                 padding: 0 1.5rem;
                 text-decoration: none;
-                color: ${props => props.theme === "dark" ? "#FFFFFF" : props.theme === "light" ? "#333333" : "#333333"};
+                color: ${props => props.theme === "dark" ? "#ffffff" : props.theme === "light" ? "#333333" : "#333333"};
                 &.active {
                     text-decoration: underline;
                 }
@@ -71,14 +71,14 @@ const Head = styled.header`
     }
 
     h4 {
-        margin-left: 10px;
+        margin-left: 1rem;
     }
 `;
 
 
 const HeaderSmallButton = styled.button`
-    padding: .3rem 1rem;
-    font-size: .8rem;
+    padding: 0.3rem 1rem;
+    font-size: 0.8rem;
     width: 100%;
 `;
 
@@ -98,7 +98,7 @@ class Header extends Component<HeaderStates, any> {
     render() {
         return (
             <Head theme={`${this.state.currentTheme ? this.state.currentTheme : "dark"}`} className="app-header">
-                <Container innerSpacing="10" textColor="inherit">
+                <Container innerSpacing="1">
                     <div>
                         <HeaderImg/>
                     </div>

@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
-import {Container, H3} from '../styled/styles';
+import React from 'react';
+import { Container, H3, PageBodyWrap } from '../styled/styles';
 
 
-class AddEmployee extends Component {
-    render() {
-        return (
-            <Container innerSpacing="20" textColor="inherit">
+const AddEmployee = () => {
+    return (
+        <PageBodyWrap>
+            <Container innerSpacing="1.5">
                 <H3 borderBottom>Add new employee</H3>
             </Container>
-        );
-    }
+        </PageBodyWrap>
+    );
 }
 
 export default AddEmployee;
