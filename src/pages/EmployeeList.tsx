@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import {Container, H3} from '../styled/styles';
 
 class EmployeeList extends Component {
     render() {
         return (
-            <div className="page-body container py-5">
-                <h3 className="border-bottom">Employee List</h3>
-            </div>
+            <Container innerSpacing="20" textColor="inherit">
+                <H3 borderBottom>Employee List</H3>
+            </Container>
         );
     }
 }

@@ -1,10 +1,20 @@
+import styled from 'styled-components';
 import React from 'react';
+import { Container} from '../styled/styles';
+
+const FooterStyle = styled.footer`
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #343a40;
+`;
 
 const Footer = () => {
     return ( 
-        <footer className={`bg-dark text-white`}>
-            <div className="container p-2">Copyright © 2020 test Inc.</div>
-        </footer>
+        <FooterStyle>
+            <Container innerSpacing="20" textColor="white">Copyright © 2020 test Inc.</Container>
+        </FooterStyle>
     );
 }
  

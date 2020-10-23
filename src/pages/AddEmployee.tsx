@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
+import {Container, H3} from '../styled/styles';
+
 
 class AddEmployee extends Component {
     render() {
         return (
-            <div className="page-body container py-5">
-                <h3 className="border-bottom">Add new employee</h3>
-            </div>
+            <Container innerSpacing="20" textColor="inherit">
+                <H3 borderBottom>Add new employee</H3>
+            </Container>
         );
     }
 }
