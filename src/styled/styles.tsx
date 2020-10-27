@@ -1,8 +1,12 @@
 import styled, {css, keyframes} from 'styled-components';
 
 export const Container = styled("div")<{ innerSpacing?: string, textColor?: string }>`
-    width: 1200px;
-    margin: 0 auto;
+
+    @media only screen and (min-width: 1200px) {
+        max-width: 1140px;
+        margin: 0 auto;
+    }
+
     ${props => props.innerSpacing &&
         css`
             padding: ${props.innerSpacing}rem;
@@ -24,7 +28,7 @@ const headerTexts= {
     fontFamily: "Roboto",
 }
 
-export const H3 = styled("h3")<{borderBottom: boolean}>`
+export const H3 = styled("h3")<{borderBottom?: boolean}>`
     font-size: 28px;
     ${css`
         ${headerTexts}
@@ -39,13 +43,34 @@ export const H3 = styled("h3")<{borderBottom: boolean}>`
     }
 `;
 
-export const DefaultButton = styled.button`
-    padding: 10px 20px;
+export const DefaultButton = styled.button<{full?: boolean, ghost?: boolean}>`
+    padding: 0.5rem 1rem;
     box-shadow: none;
     border-radius: 4px;
     border: none;
     margin-right: 1rem;
     cursor: pointer;
+
+    ${props => props.full && 
+        css`
+            width: 100%;
+        `
+    }
+
+    ${props => props.ghost && 
+        css`
+            background: transparent;
+            border: 1px solid ${props => props.theme.colors.primaryColor};
+            color: ${props => props.theme.colors.primaryColor};
+            
+            &:hover {
+                background: ${props => props.theme.colors.primaryColor};
+                color: #ffffff;
+                transition: .3s ease-in-out;
+            }
+        `
+    }
+
     &:focus {
         outline: none;
     }
@@ -73,3 +98,10 @@ export const rotate = keyframes`
         transform: rotate(360deg);
     }
 `;
+
+// Common styles to extend
+
+export const FlexVCenter = {
+    display: "flex",
+    alignItems: "center",
+}

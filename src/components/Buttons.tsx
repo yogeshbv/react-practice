@@ -3,11 +3,13 @@ import { DefaultButton } from '../styled/styles';
 
 interface BtnProps {
     btnText: string;
+    full?: boolean;
+    ghost?: boolean;
 }
 
-const Button = ({ btnText }: BtnProps) => {
+const Button = ({ btnText, full, ghost}: BtnProps) => {
     return (
-        <DefaultButton>{btnText}</DefaultButton>
+        <DefaultButton {...full} {...ghost}>{btnText}</DefaultButton>
     );
 }
 

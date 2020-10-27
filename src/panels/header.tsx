@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
-import { Container, rotate } from '../styled/styles';
+import { Container, rotate, FlexVCenter } from '../styled/styles';
+// import Theme from './../styled/Theme';
 
 const HeaderImg = styled.img.attrs({
     src: "../../../logo512.png",
@@ -12,27 +13,55 @@ const HeaderImg = styled.img.attrs({
     height: 4.2rem;
 `;
 
+const LogoWrap = styled.div`
+    ${FlexVCenter}
+    @media only screen and (max-width: 1024px) {
+        width: 100%;
+        justify-content: center;
+    }
+`;
+
 const MainMenu = styled.ul`
     display: flex;
     margin: 0 0 0 4rem;
     padding: 0;
+
+    @media only screen and (max-width: 1024px) {
+        width: 100%;
+        margin: 0 0 1rem 0;
+        flex-wrap: wrap;
+        li {
+            list-style: none;
+            width: 50%;
+            text-align: center;
+            font-size: ${props => props.theme.fontSizes.fontSmall};
+            padding: 0.5rem;
+            box-sizing: border-box;
+            margin: 0;
+        }
+    }
 `;
 
 const SelectTheme =styled.div`
     width: 150px;
-    padding: .3rem;
+    padding: 0.3rem;
     background: #ffffff;
-    padding: .2rem 0 0.2rem 0.2rem;
+    padding: 0.2rem 0 0.2rem 0.2rem;
     border-radius: 4px;
     margin-left: auto;
+
+    @media only screen and (max-width: 1024px) {
+        width: 100%;
+    }
+
     ul {
         margin: 0;
         padding: 0;
         display: flex;
         list-style: none;
         li {
-            margin-right: 0.2rem;
             flex: 1;
+            padding: 0 0.2rem;
             button {
                 background: transparent;
                 border-radius: 4px;
@@ -50,15 +79,16 @@ const Head = styled.header`
     color: ${props => props.theme === "dark" ? "#ffffff" : props.theme === "light" ? "#333333" : "#333333"};
 
     ${Container} {
-        display: flex;
-        padding: 0.5rem 0;
-        align-items: center;
+        padding: 1rem;
+        ${FlexVCenter}
+        @media only screen and (max-width: 1024px) {
+            flex-direction: column;
+        }
     }
 
     ${MainMenu} {
         li {
             list-style: none;
-            margin-right: 0.2rem;
             a {
                 padding: 0 1.5rem;
                 text-decoration: none;
@@ -78,7 +108,7 @@ const Head = styled.header`
 
 const HeaderSmallButton = styled.button`
     padding: 0.3rem 1rem;
-    font-size: 0.8rem;
+    font-size: ${props => props.theme.fontSizes.fontSmall};
     width: 100%;
 `;
 
@@ -99,14 +129,17 @@ class Header extends Component<HeaderStates, any> {
         return (
             <Head theme={`${this.state.currentTheme ? this.state.currentTheme : "dark"}`} className="app-header">
                 <Container innerSpacing="1">
-                    <div>
-                        <HeaderImg/>
-                    </div>
-                    <h4>Learn react</h4>
+                    <LogoWrap>
+                        <div>
+                            <HeaderImg/>
+                        </div>
+                        <h4>Learn react</h4>
+                    </LogoWrap>
                     <MainMenu>
                         <li><NavLink exact activeClassName='active' to='/'>Home</NavLink></li>
                         <li><NavLink activeClassName='active' to='/employee-list'>All employees</NavLink></li>
                         <li><NavLink activeClassName='active' to='/add-employee'>Add new employee</NavLink></li>
+                        <li><NavLink activeClassName='active' to='/styled-components'>Styled components</NavLink></li>
                     </MainMenu>
                     <SelectTheme>
                         <ul>

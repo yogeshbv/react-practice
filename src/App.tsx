@@ -1,25 +1,26 @@
 import React from 'react';
 import './App.css';
-// import Footer from './panels/footer';
-// import PageBody from './panels/pageBody';
 import Header from './panels/Header';
 import Footer from './panels/Footer';
 import  PageBody from './panels/PageBody';
 import styled from 'styled-components';
+import Theme from './styled/Theme';
 
 const AppWrapper = styled.div `
     display: flex;
     flex-direction: column;
+    height: 100%;
 `;
-
 
 function App() {
   return (
-    <AppWrapper>
-      <Header />
-      <PageBody />
-      <Footer />
-    </AppWrapper>
+    <Theme>
+      <AppWrapper>
+        <Header />
+        <PageBody />
+        <Footer />
+      </AppWrapper>
+    </Theme>
     
   );
 }

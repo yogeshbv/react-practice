@@ -1,50 +1,66 @@
-export const emp = [
-    {
-      "userId": 1,
-      "id": 1,
-      "name": "Yogesh Valkunde",
-      "confirmed": true,
-    },
-    {
-      "userId": 1,
-      "id": 2,
-      "name": "Atish Debe",
-      "confirmed": true,
-    },
-    {
-      "userId": 1,
-      "id": 3,
-      "name": "Ayush Rana",
-      "confirmed": false,
-    },
-    {
-      "userId": 1,
-      "id": 4,
-      "name": "Sam Lani",
-      "confirmed": true,
-    },
-    {
-      "userId": 1,
-      "id": 5,
-      "name": "Akshay B",
-      "confirmed": false,
-    },
-    {
-      "userId": 1,
-      "id": 6,
-      "name": "Pratik T",
-      "confirmed": false,
-    },
-    {
-      "userId": 1,
-      "id": 7,
-      "name": "Ravi D",
-      "confirmed": true,
-    },
-    {
-      "userId": 1,
-      "id": 8,
-      "name": "Aadi S",
-      "confirmed": true,
-    }
-  ]
+export const employees = [
+  {
+    "userId": 101,
+    "id": 1,
+    "name": "Yogesh Valkunde",
+    "image": "https://via.placeholder.com/800",
+    "confirmed": true,
+    "skills": "Java",
+  },
+  {
+    "userId": 102,
+    "id": 2,
+    "name": "Atish Debe",
+    "image": "https://via.placeholder.com/800",
+    "confirmed": true,
+    "skills": "ReactJs",
+  },
+  {
+    "userId": 103,
+    "id": 3,
+    "name": "Ayush Rana",
+    "image": "https://via.placeholder.com/800",
+    "confirmed": false,
+    "skills": "Angular",
+  },
+  {
+    "userId": 104,
+    "id": 4,
+    "name": "Sam Lani",
+    "image": "https://via.placeholder.com/800",
+    "confirmed": true,
+    "skills": "ReactJs",
+  },
+  {
+    "userId": 105,
+    "id": 5,
+    "name": "Akshay B",
+    "image": "https://via.placeholder.com/800",
+    "confirmed": false,
+    "skills": "Java",
+  },
+  {
+    "userId": 106,
+    "id": 6,
+    "name": "Pratik T",
+    "image": "https://via.placeholder.com/800",
+    "confirmed": false,
+    "skills": "Angular",
+  },
+  {
+    "userId": 107,
+    "id": 7,
+    "name": "Ravi D",
+    "image": "https://via.placeholder.com/800",
+    "confirmed": true,
+    "skills": "Angular",
+  },
+  {
+    "userId": 108,
+    "id": 8,
+    "name": "Aadi S",
+    "image": "https://via.placeholder.com/800",
+    "confirmed": true,
+    "skills": "Java",
+  }
+]

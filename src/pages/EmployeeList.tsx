@@ -1,64 +1,128 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Container, H3, PageBodyWrap } from '../styled/styles';
-import { emp } from  '../services/empData'
+import { employees } from  '../services/empData';
+import EmployeeInfoComp from '../components/EmployeeInfo';
 
 const EmpInfoWrap = styled.div`
-    background: #b9d7ef;
+    background: ${props => props.theme.colors.altColor};
     padding: 1rem;
 `;
 
-const EmpInfo = styled.div`
-    background: #ffffff;
-    margin-bottom: 1rem;
-    border: 1px solid #dddddd;
-    box-shadow: 0 2px 3px #cccccc;
+const EmpSkills = styled.div`
     padding: 1rem;
-    display: flex;
-    align-items: center;
+    position: relative;
+    cursor: pointer;
+    font-size: ${props => props.theme.fontSizes.font200};
+    font-weight: bold;
+
+    &:after {
+        content: ">";
+        transform: rotate(90deg);
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 2rem;
+        margin: auto;
+        color: #999999;
+        line-height: 1;
+        height: 1.4rem;
+    }
+    
 `;
 
-const EmpId = styled.div `
-    border-right: 2px solid #ffffff;
-    margin-right: 1rem;
+const SkilledEmpWrapper = styled.div `
+    padding: 1rem;
+    display: none;
+    flex-wrap: wrap;
 `;
 
-const EmpName = styled.div `
-    flex: 1;
-`;
+const SkilledEmp = styled("div")<{active: boolean}>`
+    border-bottom: 1px solid #ffffff;
 
-const EmpConfirmed = styled.div `
-    img {
-        width: 2rem;
+    &:last-child {
+        border: none;
+    }
+
+    ${props => props.active ? `
+        ${EmpSkills} {
+
+            &:after {
+                transform: rotate(-90deg);
+            }
+        }
+
+        ${SkilledEmpWrapper} {
+            height: auto;
+            min-height: 30
+            transition: .8s ease-in-out;
+        }
+    ` : `
+        ${SkilledEmpWrapper} {
+            height: 0;
+            transition: .8s ease-in-out;
+        }
+    `}
+
+    ${SkilledEmpWrapper} {
+        display: ${(props) => props.active === true ? `flex` : `none`};
     }
 `;
 
-const NotConfirmed = styled.div `
-    background: #f0f0f0;
-    width: 2rem;
-    height: 2rem;
-    border-radius: 100%;
-`;
+interface EmployeeInfoProps {
+    activeSkill?: string;
+}
 
-const EmployeeList = () => {
-    return (
-        <PageBodyWrap>
-            <Container innerSpacing="1.5">
-                <H3 borderBottom>Employee List</H3>
-                <EmpInfoWrap>
-                    {emp.map(function (emp: any) {
-                        return (
-                            <EmpInfo key={emp.id}>
-                                <EmpId>{emp.id}.</EmpId>
-                                <EmpName>{emp.name}</EmpName>
-                                <EmpConfirmed>{emp.confirmed ? <img src="../../../check.png" alt="check" /> : <NotConfirmed />}</EmpConfirmed>
-                            </EmpInfo>
-                        );
-                    })}
-                </EmpInfoWrap>
-            </Container>
-        </PageBodyWrap>
-    );
+class EmployeeList extends Component<EmployeeInfoProps, any>  {
+
+    constructor(props: any) {
+        super(props);
+        this.state = {
+            activeSkill: "",
+        }
+    }
+
+    render() {
+        const javaSkilled = employees.filter(obj => {
+            return obj.skills === "Java";
+        });
+        const reactSkilled = employees.filter(obj => {
+            return obj.skills === "ReactJs";
+        });
+        const angularSkilled = employees.filter(obj => {
+            return obj.skills === "Angular";
+        });
+
+        const skills = ["Java", "ReactJs", "Angular"];
+
+        return (
+            <PageBodyWrap>
+                <Container innerSpacing="1.5">
+                    <H3 borderBottom>Employee List</H3>
+                    <EmpInfoWrap>
+                        {skills.map((currentSkill, index) => {
+                            return (
+                                <SkilledEmp key={index} active={this.state.activeSkill === currentSkill ? true : false}>
+                                    <EmpSkills onClick={ ()=> this.selectSkill(currentSkill)}>{currentSkill}</EmpSkills>
+                                    <SkilledEmpWrapper>
+                                        <EmployeeInfoComp skill={currentSkill === "Java" ? javaSkilled : currentSkill === "ReactJs" ? reactSkilled : currentSkill === "Angular" ? angularSkilled : null} />
+                                    </SkilledEmpWrapper>
+                                </SkilledEmp>
+                            )
+                        })}
+                    </EmpInfoWrap>
+                </Container>
+            </PageBodyWrap>
+        );
+    }
+
+    selectSkill = (currentSkill: string) => {
+        if (this.state.activeSkill === currentSkill) {
+            this.setState({activeSkill: "sameSkill"});
+        } else {
+            this.setState({activeSkill: currentSkill});
+        }
+    }
 }
 
 export default EmployeeList;
